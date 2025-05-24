@@ -1,13 +1,23 @@
-document.getElementById('pickupForm').onsubmit = async (e) => {
-  e.preventDefault();
-  const location = document.getElementById('pickupLocation').value;
-  const user = auth.currentUser;
-  await db.collection('pickups').add({
-    userId: user.uid,
-    location,
-    status: 'pending',
-    createdAt: firebase.firestore.FieldValue.serverTimestamp()
-  });
-  alert('Pickup requested!');
-  e.target.reset();
-};
+
+// Handle pickup requests (placeholder for future implementation)
+function requestPickup(reportId) {
+    const report = reports.find(r => r.id === reportId);
+    if (report && report.status === 'pending') {
+        report.status = 'in-progress';
+        renderReports();
+        updateStats();
+        initializeMap();
+        alert('Pickup request sent to municipality!');
+    }
+}
+
+// Update report status (for admin/municipality use)
+function updateReportStatus(reportId, newStatus) {
+    const report = reports.find(r => r.id === reportId);
+    if (report) {
+        report.status = newStatus;
+        renderReports();
+        updateStats();
+        initializeMap();
+    }
+}

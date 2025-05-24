@@ -1,87 +1,187 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Smart Waste Management</title>
-  <link rel="stylesheet" href="css/frontpage.css">
-  <link rel="stylesheet" href="css/auth.css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:600,400&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CleanCity - Community Waste Management</title>
+    <meta name="description" content="Report and track waste management issues in your community" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/frontpage.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.462.0/lucide.min.css" rel="stylesheet">
 </head>
 <body>
-  <!-- HEADER -->
-  <header class="main-header">
-    <div class="logo-title">
-      <img src="assets/logo.png" alt="Logo" class="logo">
-      <span class="title">Smart Waste Management</span>
-    </div>
-    <nav class="nav-links">
-      <a href="#" id="aboutNav">About</a>
-      <a href="#" id="helpNav">Help</a>
-      <a href="#" id="dashboardNav">Dashboard</a>
-      <button id="loginNav" class="login-btn">Login</button>
-    </nav>
-  </header>
-
-  <!-- CONTENT SECTIONS -->
-  <main>
-    <section id="aboutSection" class="content-section">
-      <h2>About This Web Application</h2>
-      <p>
-        <b>Smart Waste Management</b> empowers citizens to keep their city clean and green.
-        Easily report garbage spots, request pickups, track status, and get rewarded for your civic contribution.
-        Together, let’s make our neighborhoods cleaner and healthier!
-      </p>
-    </section>
-    <section id="helpSection" class="content-section" style="display:none">
-      <h2>How to Use</h2>
-      <ol>
-        <li><b>Pin Garbage Spots:</b> Click on the map in Dashboard to report a spot with a photo and description.</li>
-        <li><b>Request Pickups:</b> Fill the pickup form for your area.</li>
-        <li><b>Track Status:</b> See your reports and their progress.</li>
-        <li><b>Leaderboard:</b> Get recognized for your contributions!</li>
-      </ol>
-    </section>
-    <section id="dashboardSection" class="content-section" style="display:none">
-      <h2>Dashboard Preview</h2>
-      <p>After logging in, you can:</p>
-      <ul>
-        <li>Report garbage spots on the map</li>
-        <li>Request pickups</li>
-        <li>Track your report status</li>
-        <li>See eco tips and the leaderboard</li>
-      </ul>
-      <p><i>Login to access the full dashboard.</i></p>
-    </section>
-  </main>
-
-  <!-- LOGIN MODAL -->
-  <div id="loginModal" class="modal">
-    <div class="modal-content">
-      <span class="close" id="closeModal">&times;</span>
-      <h2>Login or Register</h2>
-      <form id="authForm">
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="password" id="password" placeholder="Password" required>
-        <div class="form-buttons">
-          <button type="submit" id="loginBtn">Login</button>
-          <button type="button" id="registerBtn">Register</button>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <i data-lucide="trash-2"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>CleanCity</h1>
+                        <p>Community Waste Management</p>
+                    </div>
+                </div>
+                <button id="reportBtn" class="btn btn-primary">
+                    <i data-lucide="map-pin"></i>
+                    Report Issue
+                </button>
+            </div>
         </div>
-      </form>
-      <p id="authError" class="error"></p>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Keep Our City Clean Together</h2>
+                <p>Report waste issues, track cleanup progress, and help build a cleaner, healthier community for everyone.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Cards -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card pending">
+                    <div class="stat-icon">
+                        <i data-lucide="clock"></i>
+                    </div>
+                    <div class="stat-number" id="pendingCount">1</div>
+                    <div class="stat-label">Pending Reports</div>
+                </div>
+                <div class="stat-card progress">
+                    <div class="stat-icon">
+                        <i data-lucide="alert-triangle"></i>
+                    </div>
+                    <div class="stat-number" id="progressCount">1</div>
+                    <div class="stat-label">In Progress</div>
+                </div>
+                <div class="stat-card resolved">
+                    <div class="stat-icon">
+                        <i data-lucide="check-circle"></i>
+                    </div>
+                    <div class="stat-number" id="resolvedCount">1</div>
+                    <div class="stat-label">Resolved</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="section-card">
+                <div class="section-header">
+                    <h3><i data-lucide="map-pin"></i> Waste Locations Map</h3>
+                    <p>Click on the map to report a new waste issue or view existing reports</p>
+                </div>
+                <div class="map-container" id="wasteMap">
+                    <!-- Map will be rendered here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Reports -->
+    <section class="reports-section">
+        <div class="container">
+            <div class="section-card">
+                <div class="section-header">
+                    <h3><i data-lucide="trash-2"></i> Recent Reports</h3>
+                    <p>Latest waste management reports from the community</p>
+                </div>
+                <div class="reports-list" id="reportsList">
+                    <!-- Reports will be rendered here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="tips-section">
+        <div class="container">
+            <div class="section-card">
+                <div class="section-header">
+                    <h3><i data-lucide="lightbulb"></i> Waste Reduction Tips</h3>
+                    <p>Learn how to reduce waste and help keep our community clean</p>
+                </div>
+                <div class="tips-grid" id="tipsGrid">
+                    <!-- Tips will be rendered here -->
+                </div>
+                <div class="pro-tip">
+                    <h4>💡 Pro Tip</h4>
+                    <p>Set up a weekly reminder to check your neighborhood for waste issues. Small actions by everyone can make a big difference in keeping our community clean!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Report Modal -->
+    <div id="reportModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i data-lucide="map-pin"></i> Report Waste Issue</h3>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <form id="reportForm">
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" placeholder="e.g., Main Street & 5th Ave" required>
+                </div>
+                <div class="form-group">
+                    <label for="type">Type of Issue</label>
+                    <select id="type" required>
+                        <option value="">Select issue type</option>
+                        <option value="Overflowing Bin">Overflowing Bin</option>
+                        <option value="Illegal Dumping">Illegal Dumping</option>
+                        <option value="Litter">Litter</option>
+                        <option value="Hazardous Waste">Hazardous Waste</option>
+                        <option value="Construction Debris">Construction Debris</option>
+                        <option value="Electronic Waste">Electronic Waste</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="urgency">Urgency Level</label>
+                    <select id="urgency">
+                        <option value="low">Low - Can wait a few days</option>
+                        <option value="medium" selected>Medium - Should be addressed soon</option>
+                        <option value="high">High - Needs immediate attention</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" placeholder="Describe the issue in detail..." rows="3" required></textarea>
+                </div>
+                <div class="photo-upload">
+                    <i data-lucide="camera"></i>
+                    <p>Photo upload feature coming soon</p>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i data-lucide="send"></i>
+                        Submit Report
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
-  </div>
 
-  <footer>
-    <p>&copy; 2025 Smart Waste Management | Built for Hack With Gujarat</p>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-  <script src="js/firebase-config.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/frontpage.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/frontpage.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/pickup.js"></script>
+    <script src="js/status.js"></script>
+    <script src="js/tips.js"></script>
+    <script src="js/leaderboard.js"></script>
+    <script src="js/logout.js"></script>
 </body>
 </html>

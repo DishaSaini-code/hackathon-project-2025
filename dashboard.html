@@ -1,59 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Smart Waste Management</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/dashboard.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - CleanCity</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.462.0/lucide.min.css" rel="stylesheet">
 </head>
 <body>
-  <nav>
-    <img src="assets/logo.png" alt="Logo" height="40">
-    <button id="logoutBtn">Logout</button>
-  </nav>
-  <main>
-    <section id="mapSection">
-      <h2>Report Garbage Spot</h2>
-      <div id="map"></div>
-      <form id="reportForm">
-        <input type="text" id="description" placeholder="Description" required>
-        <input type="file" id="photo" accept="image/*" required>
-        <button type="submit">Submit Report</button>
-      </form>
-    </section>
-    <section id="pickupSection">
-      <h2>Request Pickup</h2>
-      <form id="pickupForm">
-        <input type="text" id="pickupLocation" placeholder="Location details" required>
-        <button type="submit">Request Pickup</button>
-      </form>
-    </section>
-    <section id="statusSection">
-      <h2>Your Reports Status</h2>
-      <ul id="statusList"></ul>
-    </section>
-    <section id="tipsSection">
-      <h2>Eco Tips</h2>
-      <ul id="tipsList"></ul>
-    </section>
-    <section id="leaderboardSection">
-      <h2>Leaderboard</h2>
-      <ol id="leaderboardList"></ol>
-    </section>
-  </main>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-  <script src="js/firebase-config.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY"></script>
-  <script src="js/map.js"></script>
-  <script src="js/pickup.js"></script>
-  <script src="js/status.js"></script>
-  <script src="js/tips.js"></script>
-  <script src="js/leaderboard.js"></script>
-  <script src="js/logout.js"></script>
-  </script>
-
+    <div class="dashboard-container">
+        <h1>CleanCity Dashboard</h1>
+        <p>This is a placeholder for the admin/municipality dashboard.</p>
+        
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <h3>Total Reports</h3>
+                <div class="stat-number" id="totalReports">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Pending Action</h3>
+                <div class="stat-number" id="pendingAction">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Resolved Today</h3>
+                <div class="stat-number" id="resolvedToday">0</div>
+            </div>
+        </div>
+        
+        <a href="index.html" class="btn btn-primary">Back to Main App</a>
+    </div>
+    
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="js/frontpage.js"></script>
+    <script>
+        // Update dashboard stats
+        document.addEventListener('DOMContentLoaded', function() {
+            const totalReports = reports ? reports.length : 0;
+            const pendingAction = reports ? reports.filter(r => r.status === 'pending').length : 0;
+            const resolvedToday = reports ? reports.filter(r => r.status === 'resolved' && r.date === new Date().toISOString().split('T')[0]).length : 0;
+            
+            document.getElementById('totalReports').textContent = totalReports;
+            document.getElementById('pendingAction').textContent = pendingAction;
+            document.getElementById('resolvedToday').textContent = resolvedToday;
+        });
+    </script>
 </body>
 </html>
