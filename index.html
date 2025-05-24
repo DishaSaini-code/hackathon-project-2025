@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Waste Management</title>
+  <link rel="stylesheet" href="css/frontpage.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:600,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="logo-title">
+      <img src="assets/logo.png" alt="Logo" class="logo">
+      <span class="title">Smart Waste Management</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#" id="aboutNav">About</a>
+      <a href="#" id="helpNav">Help</a>
+      <a href="#" id="dashboardNav">Dashboard</a>
+      <button id="loginNav" class="login-btn">Login</button>
+    </nav>
+  </header>
+
+  <!-- CONTENT SECTIONS -->
+  <main>
+    <section id="aboutSection" class="content-section">
+      <h2>About This Web Application</h2>
+      <p>
+        <b>Smart Waste Management</b> empowers citizens to keep their city clean and green.
+        Easily report garbage spots, request pickups, track status, and get rewarded for your civic contribution.
+        Together, let’s make our neighborhoods cleaner and healthier!
+      </p>
+    </section>
+    <section id="helpSection" class="content-section" style="display:none">
+      <h2>How to Use</h2>
+      <ol>
+        <li><b>Pin Garbage Spots:</b> Click on the map in Dashboard to report a spot with a photo and description.</li>
+        <li><b>Request Pickups:</b> Fill the pickup form for your area.</li>
+        <li><b>Track Status:</b> See your reports and their progress.</li>
+        <li><b>Leaderboard:</b> Get recognized for your contributions!</li>
+      </ol>
+    </section>
+    <section id="dashboardSection" class="content-section" style="display:none">
+      <h2>Dashboard Preview</h2>
+      <p>After logging in, you can:</p>
+      <ul>
+        <li>Report garbage spots on the map</li>
+        <li>Request pickups</li>
+        <li>Track your report status</li>
+        <li>See eco tips and the leaderboard</li>
+      </ul>
+      <p><i>Login to access the full dashboard.</i></p>
+    </section>
+  </main>
+
+  <!-- LOGIN MODAL -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2>Login or Register</h2>
+      <form id="authForm">
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <div class="form-buttons">
+          <button type="submit" id="loginBtn">Login</button>
+          <button type="button" id="registerBtn">Register</button>
+        </div>
+      </form>
+      <p id="authError" class="error"></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Smart Waste Management | Built for Hack With Gujarat</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/frontpage.js"></script>
+</body>
+</html>
