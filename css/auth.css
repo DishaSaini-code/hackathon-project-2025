@@ -1,0 +1,80 @@
+/* auth.css */
+.auth-section, .modal-content {
+  background: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  max-width: 350px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.auth-section h2, .modal-content h2 {
+  margin-top: 0;
+  color: #007bff;
+  font-size: 1.6rem;
+}
+
+.auth-section input, .modal-content input {
+  width: 100%;
+  padding: 0.9rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.auth-section button, .modal-content button {
+  flex: 1;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  background: #007bff;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.auth-section button[type="button"], .modal-content button[type="button"] {
+  background: #28a745;
+}
+
+.auth-section button:hover, .modal-content button:hover {
+  opacity: 0.9;
+}
+
+.error {
+  color: #dc3545;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  position: absolute;
+  right: 1.2rem;
+  top: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  .auth-section, .modal-content {
+    padding: 1rem 0.5rem;
+  }
+}
