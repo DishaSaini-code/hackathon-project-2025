@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,26 +11,45 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.462.0/lucide.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-section">
-                    <div class="logo-icon">
-                        <i data-lucide="trash-2"></i>
-                    </div>
-                    <div class="logo-text">
-                        <h1>CleanCity</h1>
-                        <p>Community Waste Management</p>
-                    </div>
-                </div>
-                <button id="reportBtn" class="btn btn-primary">
-                    <i data-lucide="map-pin"></i>
-                    Report Issue
-                </button>
-            </div>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container" style="display:flex;justify-content:space-between;align-items:center;">
+        <div class="nav-logo" style="display:flex;align-items:center;gap:0.5rem;">
+          <i data-lucide="trash-2"></i>
+          <span style="font-weight:700;font-size:1.3rem;color:#059669;">CleanCity</span>
         </div>
-    </header>
+        <ul style="display: flex; gap: 2rem; list-style: none; align-items: center; margin: 0; padding: 0;">
+  <li>
+    <a href="index.html" style="text-decoration: none; color: #333; font-weight: 500; font-size: 1rem; transition: color 0.3s ease;"
+       onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#333'">
+      Home
+    </a>
+  </li>
+  <li>
+    <a href="#about" style="text-decoration: none; color: #333; font-weight: 500; font-size: 1rem; transition: color 0.3s ease;"
+       onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#333'">
+      About
+    </a>
+  </li>
+  <li>
+    <a href="#contact" style="text-decoration: none; color: #333; font-weight: 500; font-size: 1rem; transition: color 0.3s ease;"
+       onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#333'">
+      Contact
+    </a>
+  </li>
+  <li>
+    <button id="logoutBtn"
+      style="padding: 0.5rem 1.2rem; background-color: #dc3545; color: white; border: none; border-radius: 6px;
+             cursor: pointer; font-weight: 500; transition: background-color 0.3s ease;"
+      onmouseover="this.style.backgroundColor='#c82333'"
+      onmouseout="this.style.backgroundColor='#dc3545'">
+      Logout
+    </button>
+  </li>
+</ul>
+
+      </div>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -183,5 +201,12 @@
     <script src="js/tips.js"></script>
     <script src="js/leaderboard.js"></script>
     <script src="js/logout.js"></script>
+    <script>
+      document.getElementById('logoutBtn').addEventListener('click', function() {
+        firebase.auth().signOut().then(function() {
+          window.location.href = 'landing.html';
+        });
+      });
+    </script>
 </body>
 </html>

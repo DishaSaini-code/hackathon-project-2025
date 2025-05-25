@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - CleanCity</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/frontpage.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.462.0/lucide.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="auth-section">
+    <div style="margin-bottom:1.5rem;">
+      <div class="logo-icon" style="margin:0 auto 1rem;">
+        <i data-lucide="trash-2"></i>
+      </div>
+      <h2>Create Your CleanCity Account</h2>
+      <p style="color:#6b7280; font-size:1rem;">Join the movement for a cleaner city!</p>
+    </div>
+    <form id="signupForm" autocomplete="off">
+      <input type="text" id="signupName" placeholder="Full Name" required autocomplete="name">
+      <input type="email" id="signupEmail" placeholder="Email" required autocomplete="username">
+      <input type="password" id="signupPassword" placeholder="Password" required autocomplete="new-password" minlength="6">
+      <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required autocomplete="new-password" minlength="6">
+      <div class="form-buttons" style="margin-bottom:1rem;">
+        <button type="submit">Sign Up</button>
+        <a href="login.html" class="btn btn-secondary" style="padding:0.9rem;">Login</a>
+      </div>
+    </form>
+    <div id="signupError" class="error"></div>
+    <p style="margin-top:1.5rem;font-size:0.95rem;">
+      <a href="landing.html" style="color:#059669;">← Back to Home</a>
+    </p>
+  </div>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    lucide.createIcons();
+    // Add confirm password validation
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+      const password = document.getElementById('signupPassword').value;
+      const confirmPassword = document.getElementById('signupConfirmPassword').value;
+      if (password !== confirmPassword) {
+        e.preventDefault();
+        document.getElementById('signupError').textContent = "Passwords do not match.";
+      }
+    });
+  </script>
+</body>
+</html>

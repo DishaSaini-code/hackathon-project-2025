@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CleanCity - Community Waste Management</title>
+    <meta
+      name="description"
+      content="Join CleanCity to report and track waste management issues in your community."
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Lucide Icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.462.0/lucide.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* body {
+        background-image: url("assests/high.avif");
+        background-size: cover; 
+        background-repeat: no-repeat; 
+        background-position: center; 
+        height: 100vh; 
+        margin: 0;
+      } */
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background-color: #f9fafb;
+        color: #374151;
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      /* Navbar */
+      .navbar {
+        background: #ffffff;
+        padding: 1.2rem 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav-logo i {
+        color: #10b981;
+      }
+
+      .nav-links a {
+        font-weight: 600;
+        color: #10b981;
+        border: 2px solid #10b981;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .nav-links a.btn-primary {
+        background-color: #10b981;
+        color: white;
+        margin-right: 1rem;
+      }
+
+      .nav-links a:hover {
+        background-color: #059669;
+        color: white;
+      }
+
+      /* Hero */
+      .hero {
+        background: linear-gradient(90deg, #ecfdf5 0%, #d1fae5 100%);
+        text-align: center;
+        padding: 5rem 1rem 4rem;
+        border-radius: 0 0 2rem 2rem;
+      }
+
+      .hero h2 {
+        font-size: 3rem;
+        color: #047857;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        max-width: 650px;
+        margin: 0 auto 2rem;
+        color: #4b5563;
+      }
+
+      .hero a {
+        display: inline-block;
+        margin: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.75rem;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: background 0.3s;
+      }
+
+      .btn-primary {
+        background: #10b981;
+        color: white;
+      }
+
+      .btn-secondary {
+        background: #f0fdf4;
+        color: #10b981;
+        border: 2px solid #10b981;
+      }
+
+      .btn-primary:hover {
+        background: #059669;
+      }
+
+      .btn-secondary:hover {
+        background: #10b981;
+        color: white;
+      }
+
+      /* Features */
+      .features-section {
+        padding: 4rem 1rem;
+        text-align: center;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .feature-card {
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        transition: transform 0.3s;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-6px);
+      }
+
+      .feature-card i {
+        font-size: 2rem;
+        color: #10b981;
+        margin-bottom: 1rem;
+      }
+
+      .feature-card h4 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        color: #059669;
+      }
+
+      /* Community */
+      .community-section {
+        padding: 4rem 1rem;
+        text-align: center;
+        background: #ecfdf5;
+      }
+
+      .community-section img {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 1rem;
+        margin-top: 2rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      }
+
+      /* Stats */
+      .stats-section {
+        padding: 3rem 1rem;
+        background: #ffffff;
+      }
+
+      .stats-grid {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .stat-card {
+        background: #e0f2fe;
+        border-radius: 1rem;
+        padding: 1.5rem 2rem;
+        text-align: center;
+        min-width: 180px;
+      }
+
+      .stat-icon i {
+        font-size: 2rem;
+        color: #2563eb;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #059669;
+        margin: 0.5rem 0;
+      }
+
+      .stat-label {
+        font-size: 1rem;
+        color: #2563eb;
+      }
+
+      /* CTA */
+      .cta-section {
+        padding: 4rem 1rem;
+        text-align: center;
+        background-color: #059669;
+        color: white;
+        border-radius: 1rem;
+        margin: 4rem auto 2rem;
+        max-width: 850px;
+      }
+
+      .cta-section h3 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .cta-section a {
+        margin-top: 1rem;
+      }
+
+      footer {
+        background-color: #f0fdf4;
+        padding: 1.5rem;
+        text-align: center;
+        font-weight: 500;
+        color: #059669;
+      }
+
+      @media (max-width: 768px) {
+        .hero h2 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div
+        class="container"
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <div
+          class="nav-logo"
+          style="display: flex; align-items: center; gap: 0.5rem"
+        >
+          <i data-lucide="trash-2"></i>
+          <span style="font-weight: 700; font-size: 1.3rem; color: #10b981"
+            >CleanCity</span
+          >
+        </div>
+        <div class="nav-links">
+          <a href="login.html" class="btn-primary">Login</a>
+          <a href="signup.html" class="btn-secondary">Sign Up</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <h2>Welcome to CleanCity</h2>
+      <p>
+        Empowering communities to keep cities clean, green, and beautiful.
+        Report waste, track progress, and join hands for a sustainable tomorrow.
+      </p>
+      <div>
+        <a href="signup.html" class="btn-primary">Get Started</a>
+        <a href="login.html" class="btn-secondary">Login</a>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features-section" id="features">
+      <h3 style="color: #059669; font-size: 2rem">Features</h3>
+      <div class="features-grid">
+        <div class="feature-card">
+          <i data-lucide="map-pin"></i>
+          <h4>Easy Waste Reporting</h4>
+          <p>Report garbage issues with location and photos in seconds.</p>
+        </div>
+        <div class="feature-card">
+          <i data-lucide="activity"></i>
+          <h4>Live Progress Tracking</h4>
+          <p>
+            See the status of your reports and community action in real time.
+          </p>
+        </div>
+        <div class="feature-card">
+          <i data-lucide="users"></i>
+          <h4>Community Impact</h4>
+          <p>
+            Collaborate with neighbors and local authorities for a cleaner city.
+          </p>
+        </div>
+        <div class="feature-card">
+          <i data-lucide="award"></i>
+          <h4>Recognition & Rewards</h4>
+          <p>Earn badges and recognition for your contributions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMUNITY -->
+    <section class="community-section" id="community">
+      <h3 style="font-size: 2rem; color: #047857">Our Community</h3>
+      <p>
+        CleanCity is a growing network of responsible citizens, volunteers, and
+        civic authorities. Together, we have resolved thousands of waste issues
+        and made neighborhoods healthier and happier.
+      </p>
+      <img src="assets/community-cleanup.jpg" alt="CleanCity Community" />
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-section" id="stats">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon"><i data-lucide="clock"></i></div>
+          <div class="stat-number">1,200+</div>
+          <div class="stat-label">Reports Submitted</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i data-lucide="alert-triangle"></i></div>
+          <div class="stat-number">800+</div>
+          <div class="stat-label">Issues In Progress</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i data-lucide="check-circle"></i></div>
+          <div class="stat-number">2,500+</div>
+          <div class="stat-label">Resolved Cases</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+      <h3>Ready to Make a Difference?</h3>
+      <p style="font-size: 1.1rem; margin-bottom: 2rem">
+        Join CleanCity and be part of the solution! Sign up now or contact us to
+        learn more.
+      </p>
+      <div>
+        <a href="signup.html" class="btn-primary">Sign Up</a>
+        <a href="mailto:info@cleancity.com" class="btn-secondary">Contact Us</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>&copy; 2025 CleanCity. All rights reserved.</footer>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>

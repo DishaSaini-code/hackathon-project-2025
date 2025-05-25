@@ -136,3 +136,29 @@ function getStatusIcon(status) {
 function formatStatus(status) {
     return status.replace('-', ' ').toUpperCase();
 }
+
+// Toggle Login/Signup Forms
+document.getElementById('loginTab').addEventListener('click', function() {
+    document.getElementById('loginTab').classList.add('active');
+    document.getElementById('signupTab').classList.remove('active');
+    document.getElementById('loginForm').style.display = '';
+    document.getElementById('signupForm').style.display = 'none';
+});
+
+document.getElementById('signupTab').addEventListener('click', function() {
+    document.getElementById('signupTab').classList.add('active');
+    document.getElementById('loginTab').classList.remove('active');
+    document.getElementById('signupForm').style.display = '';
+    document.getElementById('loginForm').style.display = 'none';
+});
+
+// Dummy submit handlers (replace with actual authentication logic)
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Login functionality goes here!');
+});
+
+document.getElementById('signupForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Signup functionality goes here!');
+});
