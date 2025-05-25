@@ -11,10 +11,10 @@ let leaderboardData = [
 function renderLeaderboard() {
     console.log('Leaderboard data:', leaderboardData);
     // This would render a leaderboard component
-}
+};
 
 // Add points for user actions
 function addPoints(userId, action) {
     console.log(`User ${userId} performed action: ${action}`);
     // This would update user points in the system
-}
+};

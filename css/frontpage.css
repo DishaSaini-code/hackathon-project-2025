@@ -7,6 +7,11 @@
     border-radius: 0.75rem;
     overflow: hidden;
 }
+#wasteMap {
+  height: 500px;
+  width: 100%;
+}
+
 
 .map-background {
     position: absolute;
