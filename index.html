@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/frontpage.css">
     <link rel="stylesheet" href="css/dashboard.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.462.0/lucide.min.css" rel="stylesheet">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.462.0/lucide.min.css" rel="stylesheet"> -->
 </head>
 <body>
     <!-- Navbar -->
@@ -202,12 +202,8 @@
     <script src="js/tips.js"></script>
     <script src="js/leaderboard.js"></script>
     <script src="js/logout.js"></script>
-    <script>
-      document.getElementById('logoutBtn').addEventListener('click', function() {
-        firebase.auth().signOut().then(function() {
-          window.location.href = 'landing.html';
-        });
-      });
-    </script>
+    <!-- <script type="module" src="js/firebase-config.js"></script> -->
+
+
 </body>
 </html>

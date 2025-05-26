@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/frontpage.css">
   <link rel="stylesheet" href="css/auth.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.462.0/lucide.min.css" rel="stylesheet">
+  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.462.0/lucide.min.css" rel="stylesheet"> -->
 </head>
 <body>
   <div class="auth-section">
@@ -18,7 +18,7 @@
       <h2>Create Your CleanCity Account</h2>
       <p style="color:#6b7280; font-size:1rem;">Join the movement for a cleaner city!</p>
     </div>
-    <form id="signupForm" autocomplete="off" action="index.html">
+    <form id="signupForm" autocomplete="off">
       <input type="text" id="signupName" placeholder="Full Name" required autocomplete="name">
       <input type="email" id="signupEmail" placeholder="Email" required autocomplete="username">
       <input type="password" id="signupPassword" placeholder="Password" required autocomplete="new-password" minlength="6">
@@ -36,6 +36,8 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <script src="js/firebase-config.js"></script>
   <script src="js/auth.js"></script>
+  <script type="module" src="js/firebase-config.js"></script>
+
   <script>
     lucide.createIcons();
     // Add confirm password validation

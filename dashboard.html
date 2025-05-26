@@ -6,9 +6,19 @@
     <title>Dashboard - CleanCity</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dashboard.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.462.0/lucide.min.css" rel="stylesheet">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.462.0/lucide.min.css" rel="stylesheet"> -->
 </head>
 <body>
+    <script type="module">
+        import { auth } from './js/firebase-config.js';
+        import { onAuthStateChanged } from "firebase/auth";
+        onAuthStateChanged(auth, (user) => {
+    if (!user) {
+        window.location.href = 'login.html';
+    }
+    });
+    </script>
+
     <div class="dashboard-container">
         <h1>CleanCity Dashboard</h1>
         <p>This is a placeholder for the admin/municipality dashboard.</p>
@@ -30,9 +40,13 @@
         
         <a href="index.html" class="btn btn-primary">Back to Main App</a>
     </div>
+    <!-- Add this where you want to show the user info -->
+    
     
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script src="js/frontpage.js"></script>
+    <script type="module" src="js/firebase-config.js"></script>
+
     <script>
         // Update dashboard stats
         document.addEventListener('DOMContentLoaded', function() {
@@ -45,5 +59,22 @@
             document.getElementById('resolvedToday').textContent = resolvedToday;
         });
     </script>
+    <div id="userInfo"></div>
+    <script type="module">
+       import { auth } from './js/firebase-config.js';
+       import { onAuthStateChanged } from "firebase/auth";
+
+       onAuthStateChanged(auth, (user) => {
+    if (!user) {
+       window.location.href = 'login.html';
+    } else {
+      // Show user info
+     const userInfoDiv = document.getElementById('userInfo');
+    if (userInfoDiv) {
+      userInfoDiv.textContent = `Welcome, ${user.displayName || user.email}!`;
+    }
+    }
+   });
+   </script>
 </body>
 </html>

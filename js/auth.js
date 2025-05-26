@@ -1,28 +1,56 @@
+import { auth } from './firebase-config.js';
+import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+// ...login, signup, logout logic...
+// SIGNUP
+const signupForm = document.getElementById('signupForm');
+if (signupForm) {
+  signupForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const name = document.getElementById('signupName').value.trim();
+    const email = document.getElementById('signupEmail').value.trim();
+    const password = document.getElementById('signupPassword').value;
+    const confirmPassword = document.getElementById('signupConfirmPassword').value;
+    const errorDiv = document.getElementById('signupError');
+    errorDiv.textContent = "";
 
-// Authentication placeholder (for future implementation)
-let currentUser = null;
-
-// Login function (placeholder)
-function login(email, password) {
-    // This would integrate with a real authentication system
-    console.log('Login attempt:', email);
-    // For demo purposes, simulate successful login
-    currentUser = { email: email, id: 1 };
-    return Promise.resolve(currentUser);
+    if (password !== confirmPassword) {
+      errorDiv.textContent = "Passwords do not match.";
+      return;
+    }
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(userCredential.user, { displayName: name });
+      window.location.href = "login.html";
+    } catch (error) {
+      errorDiv.textContent = error.message;
+    }
+  });
 }
 
-// Logout function (placeholder)
-function logout() {
-    currentUser = null;
-    console.log('User logged out');
+// LOGIN
+const loginForm = document.getElementById('loginForm');
+if (loginForm) {
+  loginForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value;
+    const errorDiv = document.getElementById('loginError');
+    errorDiv.textContent = "";
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      window.location.href = "dashboard.html";
+    } catch (error) {
+      errorDiv.textContent = error.message;
+    }
+  });
 }
 
-// Check if user is authenticated
-function isAuthenticated() {
-    return currentUser !== null;
-}
-
-// Get current user
-function getCurrentUser() {
-    return currentUser;
+// LOGOUT
+const logoutBtn = document.getElementById('logoutBtn');
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', async function() {
+    await signOut(auth);
+    window.location.href = "login.html";
+  });
 }
